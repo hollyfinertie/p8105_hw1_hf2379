@@ -1,0 +1,22 @@
+---
+title: "Homework Problem"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+# Problem1
+
+## Create a dataframe:
+
+```{r problem1_variables}
+prob1_df = tibble (
+  prob1_sample = rnorm(8, mean=0, sd = 1),
+  prob1_sample_over0 = prob1_sample > 0,
+  prob1_char = c("I","Am", "A", "Little", "Confused", "Is", "This", "Right"),
+  prob1_factor = factor(c("yes", "no", "maybe", "yes", "no", "maybe", "yes", "no"))
+)
+```
+
