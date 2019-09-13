@@ -20,3 +20,18 @@ prob1_df = tibble (
 )
 ```
 
+## Try to take the mean of each variable:
+
+* The mean of the sample size is `r mean(pull(prob1_df, prob1_sample))`.
+
+* The mean of the logical statement is `r mean(pull(prob1_df, prob1_sample_over0))`.
+
+* The mean of the character vector is `r mean(pull(prob1_df, prob1_char))`.
+
+* The mean of the factor vector is `r mean(pull(prob1_df, prob1_factor))`.
+
+We were unable to take the mean of the first two variables because they are numeric. However, we could not take the mean of the character or factor vector becuase they were text and not numeric. 
+
+
+
+
