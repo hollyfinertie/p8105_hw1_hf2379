@@ -43,5 +43,12 @@ as.numeric(pull(prob1_df, prob1_factor))
 
 I was able to convert the logical statement and factor vector to numeric, but not the character vector. This does not completely explain why I was unable to take the mean of the 
 
+```{r}
+as.numeric(pull(prob1_df, prob1_sample_over0))
+as.factor(pull(prob1_df, prob1_sample_over0))
+as.numeric(as.factor(pull(prob1_df, prob1_sample_over0)))
+```
+
+
 
 
