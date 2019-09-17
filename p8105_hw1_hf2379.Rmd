@@ -41,12 +41,14 @@ as.numeric(pull(prob1_df, prob1_char))
 as.numeric(pull(prob1_df, prob1_factor))
 ```
 
-I was able to convert the logical statement and factor vector to numeric, but not the character vector. This does not completely explain why I was unable to take the mean of the 
+I was able to convert the logical statement and factor vector to numeric, but not the character vector. This does not completely explain why I was unable to take the mean of the
 
-```{r}
-as.numeric(pull(prob1_df, prob1_sample_over0))
-as.factor(pull(prob1_df, prob1_sample_over0))
-as.numeric(as.factor(pull(prob1_df, prob1_sample_over0)))
+## Second Code Chunk
+
+```{r problem1_secondchunk}
+as.numeric(pull(prob1_df, prob1_sample_over0))*pull(prob1_df, prob1_sample)
+as.factor(pull(prob1_df, prob1_sample_over0))*pull(prob1_df, prob1_sample)
+as.numeric(as.factor(pull(prob1_df, prob1_sample_over0)))*pull(prob1_df, prob1_sample)
 ```
 
 
