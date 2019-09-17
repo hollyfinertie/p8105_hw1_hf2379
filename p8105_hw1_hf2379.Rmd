@@ -11,7 +11,7 @@ library(tidyverse)
 
 ## Create a dataframe:
 
-```{r problem1_variables}
+```{r problem1_dataframe}
 prob1_df = tibble (
   prob1_sample = rnorm(8, mean=0, sd = 1),
   prob1_sample_over0 = prob1_sample > 0,
@@ -51,6 +51,16 @@ as.factor(pull(prob1_df, prob1_sample_over0))*pull(prob1_df, prob1_sample)
 as.numeric(as.factor(pull(prob1_df, prob1_sample_over0)))*pull(prob1_df, prob1_sample)
 ```
 
+# Problem 2
 
+```{r problem2_dataframe}
+prob2_df = tibble(
+  x = rnorm(500, mean = 0, sd = 1),
+  y=rnorm(500, mean = 0, sd = 1),
+  prob2_logical = (x + y) > 1,
+  prob2_nvector = as.numeric(prob2_logical),
+  prob2_fvector = as.factor(prob2_logical)
+)
+```
 
 
