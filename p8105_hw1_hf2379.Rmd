@@ -75,10 +75,21 @@ prob2_df = tibble(
 
 * the proportion of cases for which x + y > 1 is `r mean(pull(prob2_df, prob2_nvector))`
 
-## Graph for Problem 2
+## Plots for Problem 2
 
-```{r problem2_plot}
-ggplot(prob2_df, aes(x = x, y = y, color = prob2_logical)) + geom_point()
+```{r problem2_plot_logical}
+plot1 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_logical)) + geom_point()
+plot1
+```
+
+```{r problem2_plot_nvector}
+plot2 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_nvector)) + geom_point()
+plot2
+```
+
+```{r problem2_plot_fvector}
+plot3 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_fvector)) + geom_point()
+plot3
 ```
 
 
