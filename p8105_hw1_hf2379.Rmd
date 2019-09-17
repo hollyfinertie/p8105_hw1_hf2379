@@ -56,11 +56,23 @@ as.numeric(as.factor(pull(prob1_df, prob1_sample_over0)))*pull(prob1_df, prob1_s
 ```{r problem2_dataframe}
 prob2_df = tibble(
   x = rnorm(500, mean = 0, sd = 1),
-  y=rnorm(500, mean = 0, sd = 1),
+  y = rnorm(500, mean = 0, sd = 1),
   prob2_logical = (x + y) > 1,
   prob2_nvector = as.numeric(prob2_logical),
   prob2_fvector = as.factor(prob2_logical)
 )
 ```
+
+## Describing the newly created data frame
+
+* This dataset contains `r nrow(prob2_df)` rows and `r ncol(prob2_df)` columns
+
+* the mean of x is `r mean(pull(prob2_df, x))` 
+
+* the median of x is `r median(pull(prob2_df, x))`
+
+* the standard deviation of x is `r sd(pull(prob2_df, x))`
+
+* the proportion of cases for which x + y > 1 is `r mean(pull(prob2_df, prob2_nvector))`
 
 
