@@ -1,5 +1,7 @@
 ---
-title: "Homework Problem"
+title: "Homework # 1"
+author: "Holly Finertie (HF2379), Due:"
+date: 2019-09-20
 output: github_document
 ---
 
@@ -97,12 +99,14 @@ plot3
 
 * This plot has two colors, red and blue, for FALSE and TRUE, respectively. That's because the color assignments are based on the values for our factor vector which are either TRUE or FALSE.
 
+## Saving my scatterplots
+
 ```{r}
 ggsave(plot1, file = "plot1.png")
 ggsave(plot2, file = "plot2.png")
 ggsave(plot3, file = "plot3.png")
 ```
 
-
+## Done with HW 1! 
 
 
