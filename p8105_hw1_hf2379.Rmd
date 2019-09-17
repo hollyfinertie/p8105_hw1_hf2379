@@ -81,15 +81,26 @@ prob2_df = tibble(
 plot1 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_logical)) + geom_point()
 plot1
 ```
+* This plot has two colors, red and blue, for FALSE and TRUE, respectively. That's because the color assignments are based on the values for our logical vector which is either TRUE or FALSE.
 
 ```{r problem2_plot_nvector}
 plot2 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_nvector)) + geom_point()
 plot2
 ```
 
+* This plot has a range of colors for our range of values between 1 and 0. This color is numeric and therefore has a range of values. But since this was built off of our logical vector (TRUE, FALSE), we only see values for 1 and 0 .
+
 ```{r problem2_plot_fvector}
 plot3 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_fvector)) + geom_point()
 plot3
+```
+
+* This plot has two colors, red and blue, for FALSE and TRUE, respectively. That's because the color assignments are based on the values for our factor vector which are either TRUE or FALSE.
+
+```{r}
+ggsave(plot1, file = "plot1.png")
+ggsave(plot2, file = "plot2.png")
+ggsave(plot3, file = "plot3.png")
 ```
 
 
