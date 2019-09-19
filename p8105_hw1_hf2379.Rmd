@@ -14,15 +14,17 @@ library(tidyverse)
 ## Create a dataframe:
 
 ```{r problem1_dataframe}
-prob1_df = tibble (
-  prob1_sample = rnorm(8, mean=0, sd = 1),
+set.seed(1)
+
+prob1_df = tibble(
+  prob1_sample = rnorm(8, mean = 0, sd = 1),
   prob1_logic_vec = prob1_sample > 0,
   prob1_char_vec = c("I","Am", "A", "Little", "Confused", "Is", "This", "Right"),
   prob1_factor_vec = factor(c("yes", "no", "maybe", "yes", "no", "maybe", "yes", "no"))
 )
 ```
 
-## Try to take the mean of each variable:
+## Mean of each variable:
 
 * **The mean of the sample size is `r mean(pull(prob1_df, prob1_sample))`**. We are able to take the mean because the sample size is a numeric data type. 
 
@@ -33,18 +35,25 @@ prob1_df = tibble (
 * **The mean of the factor vector is `r mean(pull(prob1_df, prob1_factor_vec))`**. We are unable to take the mean of the factor vector because it is a text/character data type that does not correspond with numeric values. The error states that we can only take the mean of a numeric or logical argument.
 
 
-## First Code Chunk: Convert to numeric
+## First Code Chunk: convert to numeric
 
 
-```{r problem1_convert, eval = FALSE}
+```{r problem1_convert, eval=FALSE}
 as.numeric(pull(prob1_df, prob1_logic_vec))
 as.numeric(pull(prob1_df, prob1_char_vec))
 as.numeric(pull(prob1_df, prob1_factor_vec))
 ```
 
-The as.numeric function works on the logic and factor vectors, but not the character vector. We already knew that we were able to take the mean of a Boolean data type (logic vector); however, it is surprising that the as.numeric function works on the factor vector when we were unable to take the mean. Becuase there were 3 levels, the as.numeric function converted the different levels to 1, 2, and 3. Last, and unsurprisingly, the as.numeric function did not work on the character vector. There is not logical way to convert random words without a pattern into numbers. 
+The as.numeric function works on the logical and factor vectors, but not the character vector.
 
-## Second Code Chunk: Convert and multiply
+**Logical**: Because the logical vector is a Boolean data type, we can convert the TRUE / FALSE results to 1 / 0 respectively.  
+
+**Character**: I got the error "NAs introduced by coercion" showing that the as.numeric function did not work on the character vector.  
+
+**Factor**: The as.numeric function works on the factor vector even when we were unable to take the mean. Becuase there were 3 levels, the as.numeric function converted the different levels to 1, 2, and 3. 
+
+
+## Second Code Chunk: convert and multiply
 
 ```{r problem1_secondchunk}
 as.numeric(pull(prob1_df, prob1_logic_vec))*pull(prob1_df, prob1_sample)
@@ -52,11 +61,18 @@ as.factor(pull(prob1_df, prob1_logic_vec))*pull(prob1_df, prob1_sample)
 as.numeric(as.factor(pull(prob1_df, prob1_logic_vec)))*pull(prob1_df, prob1_sample)
 ```
 
-As seen above, we were able to convert the logical vector into a numeric value and multiply by the random sample.The other two commands had more surprising results. We learned that converting the logical vector to a factor vector resulted in a vector that was unable to be multiplied by the random sample. Then, we were able to convert a logical vector into a factor vector and then into a numeric vector, which was able to be multiplied. Both these results align with our previous attempts to do math with different data types: (1) we tried to take the mean of a factor and that didnt' work and (2) we convereted a factor vector into a numeric vector and were able to take the mean. 
+**Numeric**: We were able to convert the logical vector to numeric vector and multiply by our random sample.
+
+**Factor**: We were unable to multiply the converted logical vector. We got the error: '*' not meaningful for factors. 
+
+**To Factor, to numeric**: We were able to convert the logical vector into factor and then into numeric and multiply by our random sample. 
+
 
 # Problem 2
 
 ```{r problem2_dataframe}
+set.seed(2)
+
 prob2_df = tibble(
   x = rnorm(500, mean = 0, sd = 1),
   y = rnorm(500, mean = 0, sd = 1),
@@ -66,19 +82,19 @@ prob2_df = tibble(
 )
 ```
 
-## Describing the newly created data frame
+## Describe new data frame
 
-* This dataset contains `r nrow(prob2_df)` rows and `r ncol(prob2_df)` columns
+* This dataset contains `r nrow(prob2_df)` rows and `r ncol(prob2_df)` columns.
 
-* The mean of x is `r mean(pull(prob2_df, x))` 
+* The mean of x is `r mean(pull(prob2_df, x))`.
 
-* The median of x is `r median(pull(prob2_df, x))`
+* The median of x is `r median(pull(prob2_df, x))`.
 
-* The standard deviation of x is `r sd(pull(prob2_df, x))`
+* The standard deviation of x is `r sd(pull(prob2_df, x))`.
 
-* The proportion of cases for which x + y > 1 is `r mean(pull(prob2_df, prob2_num_vec))`
+* The proportion of cases for which x + y > 1 is `r mean(pull(prob2_df, prob2_num_vec))`.
 
-## Plots for Problem 2
+## Plots
 
 ```{r problem2_plot_logical}
 plot1 = ggplot(prob2_df, aes(x = x, y = y, color = prob2_logic_vec)) + geom_point()
@@ -106,12 +122,10 @@ plot3
 * This plot has two colors, red and blue, because we set the colors equal to the factor vector which was two outcomes: FALSE and TRUE. This factor vector was created from the logical vector and therefore the graph is identical to plot 1. 
 
 
-## Saving my scatterplots
+## Saving my first scatterplot
 
 ```{r}
 ggsave(plot1, file = "plot1.png")
-ggsave(plot2, file = "plot2.png")
-ggsave(plot3, file = "plot3.png")
 ```
 
 Done with HW 1! 
